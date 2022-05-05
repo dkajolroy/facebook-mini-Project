@@ -1,24 +1,26 @@
 const express = require("express")
-const cors = require("cors")
 const dotenv = require("dotenv")
-const mongoConnect = require("./Config/MongoDB.js")
+const cors = require("cors")
+const MongoConnect = require("./Config/MongoDB")
 
-// Configure
+// Config
 const app = express()
-dotenv.config()
 app.use(express.json())
 app.use(cors())
-mongoConnect(process.env.MONGO_URI)
+dotenv.config()
+MongoConnect()
 
 // Import Router
-const AuthRoute = require("./Routes/AuthRoute.js")
-const UserRoute = require("./Routes/UserRoute.js")
+const AuthRoutes = require('./Routes/AuthRoutes')
+const UserRoutes = require('./Routes/UserRoutes')
+const PostRoute = require('./Routes/PostRoute')
 
-//Config Router
-app.use("/", AuthRoute)
-app.use("/", UserRoute)
+// Config Router
+app.use("/", AuthRoutes)
+app.use("/", UserRoutes)
+app.use("/", PostRoute)
 
-// Listen Server
+// Listen Server Port
 app.listen(process.env.PORT, () => {
-    console.log("Server start port ==> " + process.env.PORT)
+    console.log("Start Server Port ==> " + process.env.PORT)
 })

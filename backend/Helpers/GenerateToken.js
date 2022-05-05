@@ -1,10 +1,14 @@
 const Jwt = require("jsonwebtoken")
 
-const generateToken = (_id) => {
+
+exports.generateToken = (_id) => {
     return Jwt.sign({ _id }, process.env.JWT_KEY, {
         expiresIn: "90d"
     })
 }
 
-
-module.exports = generateToken
+exports.emailVerifyToken = (email) => {
+    return Jwt.sign({ email }, process.env.JWT_KEY, {
+        expiresIn: "10m"
+    })
+}

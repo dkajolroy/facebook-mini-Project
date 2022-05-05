@@ -1,8 +1,10 @@
 const mongoose = require("mongoose")
 
-const mongoConnect = (uri) =>
-    mongoose.connect(uri)
-        .then(() => console.log("Database Connected"))
+const MongoConnect = () => {
+    mongoose.connect(process.env.MONGO_URI)
+        .then(() => console.log("Connected MongoDB"))
         .catch((error) => console.log(error))
+}
 
-module.exports = mongoConnect
+
+module.exports = MongoConnect
