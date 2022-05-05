@@ -4,6 +4,6 @@
 2. Express js
 3. Redux
 4. NPM
-5. Authentication and Authorization WJT
+5. Authentication and Authorization JwT
 6. Mongodb
 7. Other lybrary
