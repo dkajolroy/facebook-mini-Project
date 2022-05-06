@@ -57,6 +57,58 @@ export const getMyPostAction = () => async (dispatch, state) => {
     }
 }
 
+// Get My Post
+export const getFriedMyPostAction = () => async (dispatch, state) => {
+    const { userLogin: { loginInfo } } = state()
+
+    try {
+        dispatch({ type: "GET_FRIEND_MY_POST_REQUEST" })
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${loginInfo.token}`
+            }
+        }
+        const { data } = await axios.get("http://localhost:5000/our-post", config)
+
+        dispatch({
+            type: "GET_FRIEND_MY_POST_SUCCESS",
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: "GET_FRIEND_MY_POST_FAIL",
+            payload: error.response && error.message ?
+                error.response.data.message : error.message
+        })
+    }
+}
+
+// Get My Post
+export const getAllPostAction = () => async (dispatch, state) => {
+
+
+    try {
+        dispatch({ type: "GET_ALL_POST_REQUEST" })
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+        const { data } = await axios.get("http://localhost:5000/all-post", config)
+
+        dispatch({
+            type: "GET_ALL_POST_SUCCESS",
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: "GET_ALL_POST_FAIL",
+            payload: error.response && error.message ?
+                error.response.data.message : error.message
+        })
+    }
+}
 
 // Like Post Action
 export const likePostActions = (postId) => async (dispatch, state) => {

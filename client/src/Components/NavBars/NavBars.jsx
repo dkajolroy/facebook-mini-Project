@@ -32,7 +32,7 @@ function NavBars() {
                             <li><NavLink to={"/"}><i className="bi bi-house-door-fill"></i></NavLink></li>
                             <li><NavLink to={"/video"}><i className="bi bi-play-btn"></i></NavLink></li>
                             <li><NavLink to={"/market"}><i className="bi bi-archive"></i></NavLink></li>
-                            <li><NavLink to={"/group"}><i className="bi bi-people-fill"></i></NavLink></li>
+                            <li><NavLink to={"/friends"}><i className="bi bi-people-fill"></i></NavLink></li>
                             <li><NavLink to={"/history"}><i className="bi bi-columns"></i></NavLink></li>
                         </ul>
 

@@ -5,6 +5,7 @@ import 'aos/dist/aos.css'
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
 import TimeLine from './Pages/Timeline/TimeLine';
+import Friends from './Pages/Friends/Friends';
 
 function App() {
   AOS.init();
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<TimeLine />} />
         <Route path='/login' element={<Login />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/friends' element={<Friends />} />
       </Routes>
     </BrowserRouter>
   );

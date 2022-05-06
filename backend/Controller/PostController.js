@@ -1,4 +1,5 @@
 const PostModel = require("../Models/PostModel")
+const UserModel = require("../Models/UserModel")
 
 
 // Create Post
@@ -97,5 +98,36 @@ exports.updatePost = async (req, res) => {
         }
     } catch (error) {
 
+    }
+}
+
+
+// Get All Post 
+exports.getFriendsMyPost = async (req, res) => {
+    try {
+        const findMyData = await UserModel.findById(req.user._id)
+        const getAllPost = await PostModel.find({
+            user: { $in: [...findMyData.followings, req.user._id] }
+        }).sort({ createdAt: -1 }).populate({
+            path: "user",
+            select: ('avatar name')
+        })
+        res.status(200).send(getAllPost)
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+}
+
+
+// Get All Post 
+exports.getAllPost = async (req, res) => {
+    try {
+        const findPost = await PostModel.find().populate({
+            path: "user",
+            select: ("name avatar")
+        })
+        res.status(200).send(findPost)
+    } catch (error) {
+        res.status(500).send(error.message)
     }
 }

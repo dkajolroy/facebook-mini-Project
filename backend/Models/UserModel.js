@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true, minlength: [4, "Invalid email address"] },
     password: { type: String, required: true, minlength: [4, "Too sort"] },
     phone: { type: String, default: '' },
-    avatar: { type: String, default: '' },
+    avatar: { type: String, default: 'https://yt3.ggpht.com/ytc/AKedOLQMxO5ybJytpgAsgyYDiMw2lrUpVGo1YZddOKEljQ=s900-c-k-c0x00ffffff-no-rj' },
     bio: { type: String, default: "", maxlength: [100, "Too long"] },
     cover: { type: String, default: "" },
     gender: { type: String, required: true },

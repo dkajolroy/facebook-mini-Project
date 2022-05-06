@@ -47,6 +47,7 @@ exports.login = async (req, res) => {
                 avatar: findUser.avatar,
                 bio: findUser.bio,
                 cover: findUser.cover,
+                _id: findUser._id,
                 token: generateToken(findUser._id),
                 message: "Login Successfully"
             })

@@ -30,3 +30,27 @@ export const RegisterReducer = (state = { registerInfo: null }, action) => {
     }
 }
 
+export const getUn_followUserReducer = (state = { user: [] }, action) => {
+    switch (action.type) {
+        case "GET_UN_FOLLOW_USER_REQUEST":
+            return { loading: true, user: [] };
+        case "GET_UN_FOLLOW_USER_SUCCESS":
+            return { loading: false, user: action.payload };
+        case "GET_UN_FOLLOW_USER_FAIL":
+            return { loading: false, user: action.payload };
+        default: return state;
+    }
+}
+
+
+export const getFollowerReducer = (state = { user: [] }, action) => {
+    switch (action.type) {
+        case "GET_FOLLOWER_REQ":
+            return { loading: true, user: [] };
+        case "GET_FOLLOWER_SUC":
+            return { loading: false, user: action.payload };
+        case "GET_FOLLOWER_FAIL":
+            return { loading: false, user: action.payload };
+        default: return state;
+    }
+}

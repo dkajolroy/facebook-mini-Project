@@ -25,6 +25,33 @@ export const getMyPostReducer = (state = { myPost: [] }, action) => {
     }
 }
 
+// Get My post 
+export const getFriendMyPostReducer = (state = { post: [] }, action) => {
+    switch (action.type) {
+        case "GET_FRIEND_MY_POST_REQUEST":
+            return { loading: true, post: [] };
+        case "GET_FRIEND_MY_POST_SUCCESS":
+            return { loading: false, post: action.payload };
+        case "GET_FRIEND_MY_POST_FAIL":
+            return { loading: false, error: action.payload };
+        default: return state;
+    }
+}
+
+// Get My post 
+export const getAllPostReducer = (state = { post: [] }, action) => {
+    switch (action.type) {
+        case "GET_ALL_POST_REQUEST":
+            return { loading: true, post: [] };
+        case "GET_ALL_POST_SUCCESS":
+            return { loading: false, post: action.payload };
+        case "GET_ALL_POST_FAIL":
+            return { loading: false, error: action.payload };
+        default: return state;
+    }
+}
+
+
 
 
 //Like Unlike Post Reducer

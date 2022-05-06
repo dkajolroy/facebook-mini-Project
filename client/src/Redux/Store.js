@@ -1,9 +1,9 @@
 import { applyMiddleware, combineReducers, legacy_createStore } from 'redux'
 import { composeWithDevTools } from '@redux-devtools/extension'
 import thunk from 'redux-thunk'
-import { LoginReducer } from './Reducers/UserReducers'
+import { getFollowerReducer, getUn_followUserReducer, LoginReducer } from './Reducers/UserReducers'
 import { RegisterReducer } from './Reducers/UserReducers'
-import { createPostReducer, deletePostReducer, getMyPostReducer, likePostReducer } from './Reducers/PostReducer'
+import { createPostReducer, deletePostReducer, getAllPostReducer, getFriendMyPostReducer, getMyPostReducer, likePostReducer } from './Reducers/PostReducer'
 
 const Reducer = combineReducers({
     userLogin: LoginReducer,
@@ -11,7 +11,11 @@ const Reducer = combineReducers({
     getMyPost: getMyPostReducer,
     postLike: likePostReducer,
     createPost: createPostReducer,
-    deletePost: deletePostReducer
+    deletePost: deletePostReducer,
+    un_followingUser: getUn_followUserReducer,
+    getFollower: getFollowerReducer,
+    getOurPost: getFriendMyPostReducer,
+    getAllPost: getAllPostReducer
 })
 
 //  Local Storage

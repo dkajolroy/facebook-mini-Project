@@ -1,4 +1,4 @@
-const { createPost, getMyPost, updatePost, postLike, deletePost } = require("../Controller/PostController")
+const { createPost, getMyPost, updatePost, postLike, deletePost, getFriendsMyPost, getAllPost } = require("../Controller/PostController")
 const router = require("express").Router()
 const { privateAuth } = require("../Helpers/SecureMiddleware")
 
@@ -13,5 +13,8 @@ router.route("/post/:_id")
     .delete(privateAuth, deletePost)
 router.route("/post/like/:_id")
     .put(privateAuth, postLike)
+router.get("/our-post", privateAuth, getFriendsMyPost)
+router.get("/all-post", getAllPost)
+
 
 module.exports = router

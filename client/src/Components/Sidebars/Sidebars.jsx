@@ -52,7 +52,7 @@ function Sidebars() {
                     </Link>
                 </li>
                 <li data-aos="fade-right">
-                    <Link className='d-flex align-items-center text-decoration-none' to="/">
+                    <Link className='d-flex align-items-center text-decoration-none' to="/friends">
                         <i className="bi bi-people-fill"></i>
                         <h5 className='m-0 mt-1'>Friends</h5>
                     </Link>

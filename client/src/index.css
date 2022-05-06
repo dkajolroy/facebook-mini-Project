@@ -160,3 +160,14 @@ body {
 .dropdown-toggle::after {
   display: none !important;
 }
+
+.user__ui__un-following {
+  padding: 5px;
+  border-radius: 8px;
+  transition: .2s;
+}
+
+.user__ui__un-following:hover {
+  background-color: lightgray;
+  margin-top: 2px;
+}

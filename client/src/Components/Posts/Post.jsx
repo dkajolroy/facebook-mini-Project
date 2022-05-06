@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { ImageGrid } from "react-fb-image-video-grid"
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { ImageGrid } from 'react-fb-image-video-grid'
 import { deletePostAction, likePostActions } from '../../Redux/Actions/PostAction';
 import ReactModal from 'react-modal';
 
 function Post({ post }) {
-    // useEffect(() => {
-    //     console.log(post);
-    // }, [post])
 
     const { createdAt, desc, images, like, user, _id } = post
+
     // Date
     const dateTime = new Date(createdAt).toDateString()
 
@@ -31,6 +29,9 @@ function Post({ post }) {
         setModal(!modal)
     }
 
+    const { loginInfo } = useSelector(x => x.userLogin)
+
+    console.log(loginInfo);
     return (
         <div data-aos="fade-up" className='user__port__ui  my-4 shadow' style={{ background: "#fff", borderRadius: "10px" }}>
             <div className="row px-3 pt-3">
@@ -96,18 +97,17 @@ function Post({ post }) {
                 <p className="my-2 px-3" style={{ fontSize: "18px" }}>
                     {desc}
                 </p>
-
                 {
-                    images.length > 2 ?
-                        <ImageGrid >
+                    images.length > 1 ?
+                        <ImageGrid>
                             {
+
                                 images.map(x => (
-                                    <img key={x.slice(10, 15)} src={x} alt="Post image" />
+                                    <img key={x.slice(10, 20)} src={x} alt={x} />
                                 ))
                             }
-                        </ImageGrid> : null
-                }
-
+                        </ImageGrid>
+                        : null}
 
                 <hr />
                 <div className="like___comment__show d-flex justify-content-between w-75 m-auto">
@@ -123,7 +123,7 @@ function Post({ post }) {
                     </div>
                 </div>
                 <div className="pb-3 row post___button ">
-                    <button onClick={() => likeUnlikePost()} className="btn shadow-none col text-center"><i className="bi bi-hand-thumbs-up"></i>Like</button>
+                    <button onClick={() => likeUnlikePost()} className="btn shadow-none col text-center">{loginInfo ? like.includes(loginInfo._id) ? <i class="text-danger bi bi-hand-thumbs-up-fill"></i> : <i className="bi bi-hand-thumbs-up"></i> : <i className="bi bi-hand-thumbs-up"></i>}Like</button>
                     <button className="btn shadow-none col text-center"><i className="bi bi-chat-left-dots"></i>Comment</button>
                     <button className="btn shadow-none col text-center"><i className="bi bi-share"></i>Share</button>
                 </div>
