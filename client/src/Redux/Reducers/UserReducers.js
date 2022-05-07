@@ -54,3 +54,40 @@ export const getFollowerReducer = (state = { user: [] }, action) => {
         default: return state;
     }
 }
+
+
+export const follow_un_followReducer = (state = { user: {} }, action) => {
+    switch (action.type) {
+        case "FOLLOW_UN_FOLLOW_REQ":
+            return { loading: true, user: {} };
+        case "FOLLOW_UN_FOLLOW_SUC":
+            return { loading: false, user: action.payload };
+        case "FOLLOW_UN_FOLLOW_FAIL":
+            return { loading: false, user: action.payload };
+        default: return state;
+    }
+}
+
+export const friendReqReducer = (state = { user: [] }, action) => {
+    switch (action.type) {
+        case "FRIEND_REQ_USER_REQ":
+            return { loading: true, user: [] };
+        case "FRIEND_REQ_USER_SUC":
+            return { loading: false, user: action.payload };
+        case "FRIEND_REQ_USER_FAIL":
+            return { loading: false, user: action.payload };
+        default: return state;
+    }
+}
+
+export const unFriendReducer = (state = { user: {} }, action) => {
+    switch (action.type) {
+        case "UNFRIEND_REQ":
+            return { loading: true, user: {} };
+        case "UNFRIEND_SUC":
+            return { loading: false, user: action.payload };
+        case "UNFRIEND_FAIL":
+            return { loading: false, user: action.payload };
+        default: return state;
+    }
+}

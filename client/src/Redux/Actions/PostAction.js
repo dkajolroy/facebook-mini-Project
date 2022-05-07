@@ -84,6 +84,35 @@ export const getFriedMyPostAction = () => async (dispatch, state) => {
     }
 }
 
+// update My Post
+export const updatePostAction = (postId, desc) => async (dispatch, state) => {
+    const { userLogin: { loginInfo } } = state()
+
+    try {
+        dispatch({ type: "UPDATE_POST_REQ" })
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${loginInfo.token}`
+            }
+        }
+        const { data } = await axios.put(`http://localhost:5000/post/${postId}`, { desc }, config)
+        toast.success(data.message)
+        dispatch({
+            type: "UPDATE_POST_SUC",
+            payload: data
+        })
+    } catch (error) {
+        toast.error(error.response && error.message ?
+            error.response.data.message : error.message)
+        dispatch({
+            type: "UPDATE_POST_FAIL",
+            payload: error.response && error.message ?
+                error.response.data.message : error.message
+        })
+    }
+}
+
 // Get My Post
 export const getAllPostAction = () => async (dispatch, state) => {
 

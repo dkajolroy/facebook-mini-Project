@@ -3,6 +3,7 @@ const UserModel = require("../Models/UserModel")
 
 exports.privateAuth = async (req, res, next) => {
 
+
     if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
         try {
             const token = req.headers.authorization.split(" ")[1]

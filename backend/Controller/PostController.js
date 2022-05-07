@@ -85,6 +85,7 @@ exports.deletePost = async (req, res) => {
 // Method PUT
 // Access Private
 exports.updatePost = async (req, res) => {
+
     if (req.body.user) return res.status(400).send({ message: "You can't update your ID" })
     try {
         const findPost = await PostModel.findById(req.params._id)

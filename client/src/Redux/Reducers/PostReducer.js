@@ -51,6 +51,19 @@ export const getAllPostReducer = (state = { post: [] }, action) => {
     }
 }
 
+// Get My post 
+export const updatePostReducer = (state = { updatePost: {} }, action) => {
+    switch (action.type) {
+        case "UPDATE_POST_REQ":
+            return { loading: true, updatePost: {} };
+        case "UPDATE_POST_SUC":
+            return { loading: false, updatePost: action.payload };
+        case "UPDATE_POST_FAIL":
+            return { loading: false, error: action.payload };
+        default: return state;
+    }
+}
+
 
 
 

@@ -27,7 +27,7 @@ function CreatePost() {
         <div data-aos="fade-up" className='create__post__ui p-3 shadow' style={{ background: "#fff", borderRadius: "10px" }}>
             <div className="mt-3 user__create__post d-flex ">
                 <div className="user__active___pro" >
-                    <img style={{ width: "40px", height: '40px' }} className='img-fluid rounded-circle' src={loginInfo ? loginInfo.avatar : "https://cdn-icons-png.flaticon.com/512/1946/1946429.png"} alt="post user icon" />
+                    <img style={{ width: "40px", height: '40px' }} className='img-fluid rounded-circle' src={loginInfo ? loginInfo.avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHpMlcgNRldPhvxO6PQatDPekVroEPNMWK6PZuwpQBfN84QAKtv8liXZ8eKICnGMSr80s&usqp=CAU"} alt="post user icon" />
                 </div>
                 <div className='w-100 ms-2'>
                     <div onClick={() => toggleModal()} rows={3} style={{ cursor: "text", background: "rgb(233 233 233)" }} className='rounded-pill py-2 form-control shadow-none' >
@@ -79,7 +79,7 @@ function CreatePost() {
                 <h2>Create Post</h2><hr />
                 <div className="mt-3 user__create__post d-flex ">
                     <div className="user__active___pro" >
-                        <img style={{ width: "40px", height: '40px' }} className='img-fluid rounded-circle' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHpMlcgNRldPhvxO6PQatDPekVroEPNMWK6PZuwpQBfN84QAKtv8liXZ8eKICnGMSr80s&usqp=CAU" alt="post user icon" />
+                        <img style={{ width: "40px", height: '40px' }} className='img-fluid rounded-circle' src={loginInfo ? loginInfo.avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHpMlcgNRldPhvxO6PQatDPekVroEPNMWK6PZuwpQBfN84QAKtv8liXZ8eKICnGMSr80s&usqp=CAU"} alt="post user icon" />
                     </div>
                     <form className='w-100 ms-2' onSubmit={(e) => submitPost(e)}>
                         <textarea onChange={(e) => setPost(e.target.value)} rows={3} style={{ background: "rgb(233 233 233)" }} className='rounded form-control shadow-none' type="text" name="post" placeholder={`What's on your mind ${loginInfo ? loginInfo.name : ""} ?`} />
