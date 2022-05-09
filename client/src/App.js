@@ -6,6 +6,7 @@ import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
 import TimeLine from './Pages/Timeline/TimeLine';
 import Friends from './Pages/Friends/Friends';
+import Videos from './Pages/Videos/Videos';
 
 function App() {
   AOS.init();
@@ -18,6 +19,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/friends' element={<Friends />} />
+        <Route path='/video' element={<Videos />} />
       </Routes>
     </BrowserRouter>
   );

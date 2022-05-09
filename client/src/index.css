@@ -171,3 +171,14 @@ body {
   background-color: lightgray;
   margin-top: 2px;
 }
+
+.profile__nav__items {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.profile__nav__items:hover {
+  background: lightgray;
+}

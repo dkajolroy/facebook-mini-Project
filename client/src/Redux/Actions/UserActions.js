@@ -236,3 +236,30 @@ export const unFriendAction = (userId) => async (dispatch, state) => {
 
     }
 }
+
+
+
+// Unfriend
+// Private
+// Put
+export const getUserInfoActions = () => async (dispatch, state) => {
+    const { userLogin: { loginInfo } } = state()
+    try {
+        dispatch({ type: "USER_INFO_REQ" })
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${loginInfo.token}`
+            }
+        }
+        const { data } = await axios.get(`http://localhost:5000/profile`, config)
+        dispatch({ type: "USER_INFO_SUC", payload: data })
+    } catch (error) {
+        dispatch({
+            type: "USER_INFO_FAIL",
+            payload: error.response && error.message ?
+                error.response.data.message : error.message
+        })
+
+    }
+}

@@ -13,9 +13,10 @@ function TimeLine() {
         dispatch(getFriedMyPostAction())
         dispatch(getAllPostAction())
     }, [])
-    const { post, loading } = useSelector(x => x.getOurPost)
-    const state = useSelector(x => x.getAllPost)
+
     const { loginInfo } = useSelector(x => x.userLogin)
+    const state = useSelector(x => x.getAllPost)
+    const { post, loading } = useSelector(x => x.getOurPost)
 
     return (
         <MainLayout>

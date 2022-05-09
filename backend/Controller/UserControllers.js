@@ -1,11 +1,29 @@
 const UserModel = require("../Models/UserModel")
 
 exports.userProfile = async (req, res) => {
-    console.log(req.user)
-    const { username, name, email, avatar, cover, address, phone } = req.user
-    res.status(200).send({
-        username, name, email, avatar, cover, phone, address
-    })
+
+    try {
+        const findUser = await UserModel.findById(req.user._id)
+        if (!findUser) {
+            res.status(400).send({ message: 'User not found' })
+        } else {
+            res.status(200).send({
+                username: findUser.username,
+                name: findUser.name,
+                email: findUser.email,
+                dateOfBirth: findUser.dateOfBirth,
+                gender: findUser.gender,
+                avatar: findUser.avatar,
+                cover: findUser.cover,
+                phone: findUser.phone,
+                address: findUser.address
+            })
+        }
+    } catch (error) {
+        res.status(500).send(error.message)
+
+    }
+
 }
 
 // Follow User

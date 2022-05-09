@@ -91,3 +91,15 @@ export const unFriendReducer = (state = { user: {} }, action) => {
         default: return state;
     }
 }
+
+export const getUserInfoReducer = (state = { userInfo: {} }, action) => {
+    switch (action.type) {
+        case "USER_INFO_REQ":
+            return { loading: true, userInfo: {} };
+        case "USER_INFO_SUC":
+            return { loading: false, userInfo: action.payload };
+        case "USER_INFO_FAIL":
+            return { loading: false, userInfo: action.payload };
+        default: return state;
+    }
+}

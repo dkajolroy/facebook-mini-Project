@@ -1,7 +1,7 @@
 import { applyMiddleware, combineReducers, legacy_createStore } from 'redux'
 import { composeWithDevTools } from '@redux-devtools/extension'
 import thunk from 'redux-thunk'
-import { follow_un_followReducer, friendReqReducer, getFollowerReducer, getUn_followUserReducer, LoginReducer, unFriendReducer } from './Reducers/UserReducers'
+import { follow_un_followReducer, friendReqReducer, getFollowerReducer, getUn_followUserReducer, getUserInfoReducer, LoginReducer, unFriendReducer } from './Reducers/UserReducers'
 import { RegisterReducer } from './Reducers/UserReducers'
 import { createPostReducer, deletePostReducer, getAllPostReducer, getFriendMyPostReducer, getMyPostReducer, likePostReducer, updatePostReducer } from './Reducers/PostReducer'
 
@@ -19,7 +19,8 @@ const Reducer = combineReducers({
     updatePost: updatePostReducer,
     followUnFollow: follow_un_followReducer,
     friendReqReducer: friendReqReducer,
-    unfriend: unFriendReducer
+    unfriend: unFriendReducer,
+    userInfo: getUserInfoReducer
 })
 
 //  Local Storage

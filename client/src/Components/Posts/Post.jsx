@@ -102,7 +102,7 @@ function Post({ post }) {
                         <img style={{ width: "40px", height: '40px' }} className='img-fluid rounded-circle' src={loginInfo ? loginInfo.avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHpMlcgNRldPhvxO6PQatDPekVroEPNMWK6PZuwpQBfN84QAKtv8liXZ8eKICnGMSr80s&usqp=CAU"} alt="post user icon" />
                     </div>
                     <form className='w-100 ms-2' onSubmit={(e) => editPost(e)}>
-                        <textarea onChange={(e) => setEditValue(e.target.value)} rows={3} style={{ background: "rgb(233 233 233)" }} className='rounded form-control shadow-none' type="text" name="post" placeholder={`What's on your mind ${loginInfo ? loginInfo.name : ""} ?`} />
+                        <textarea defaultValue={desc} onChange={(e) => setEditValue(e.target.value)} rows={3} style={{ background: "rgb(233 233 233)" }} className='rounded form-control shadow-none' type="text" name="post" placeholder={`What's on your mind ${loginInfo ? loginInfo.name : ""} ?`} />
                         <button type="submit" className="btn btn-primary w-100 mt-2">Update Now</button>
                         <div className="row border  rounded p-2 gx-0 ">
                             <div className="col-md-4 justify-content-center d-flex align-items-center">
@@ -157,16 +157,20 @@ function Post({ post }) {
                     {desc}
                 </p>
                 {
-                    images.length > 1 ?
+                    images.length < 2 && images.length > 0 ?
                         <ImageGrid>
-                            {
+                            <img className='w-100' src={images[0]} alt="post image" />
+                        </ImageGrid> :
+                        images.length > 1 ?
+                            <ImageGrid>
+                                {
 
-                                images.map(x => (
-                                    <img key={x.slice(10, 20)} src={x} alt={x} />
-                                ))
-                            }
-                        </ImageGrid>
-                        : null}
+                                    images.map(x => (
+                                        <img key={x.slice(10, 20)} src={x} alt={x} />
+                                    ))
+                                }
+                            </ImageGrid>
+                            : null}
 
                 <hr />
                 <div className="like___comment__show d-flex justify-content-between w-75 m-auto">
